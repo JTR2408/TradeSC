@@ -33,7 +33,21 @@
   background-color: var(--primary-color);
 }
 
+/* styles.css or your component-specific CSS file */
+.left-content {
+  float: left;
+  margin-right: 10px; /* Adjust margin as needed */
+}
 
+.center-content {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-width: 75%; /* Ensure the image fits within the toolbar */
+  max-height: 75%; /* Ensure the image fits within the toolbar */
+}
 
 
   
