@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TradeSC';
+  menuItems: MenuItem[];
+
+  constructor() {
+    this.menuItems = [
+      { label: 'Home', routerLink: '/home' },
+      { label: 'Ships', routerLink: '/ships' },
+      { label: 'Commodities', routerLink: '/commodities' }
+    ];
+  }
 }
