@@ -1,0 +1,16 @@
+{
+    "ships": [
+      { "name": "Ship 1", "type": "Cargo" },
+      { "name": "Ship 2", "type": "Passenger" },
+      { "name": "Ship 3", "type": "Cargo" },
+      { "name": "Ship 4", "type": "Passenger" },
+      { "name": "Ship 5", "type": "Cargo" }
+    ],
+    "commodities": [
+      { "name": "Commodity 1", "type": "Material" },
+      { "name": "Commodity 2", "type": "Fuel" },
+      { "name": "Commodity 3", "type": "Equipment" },
+      { "name": "Commodity 4", "type": "Material" },
+      { "name": "Commodity 5", "type": "Fuel" }
+    ]
+  }
