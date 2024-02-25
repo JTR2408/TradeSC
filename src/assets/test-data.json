@@ -4,7 +4,8 @@
       { "name": "Ship 2", "type": "Passenger" },
       { "name": "Ship 3", "type": "Cargo" },
       { "name": "Ship 4", "type": "Passenger" },
-      { "name": "Ship 5", "type": "Cargo" }
+      { "name": "Ship 5", "type": "Cargo" },
+      { "name": "Ship 6", "type": "Passenger" }
     ],
     "commodities": [
       { "name": "Commodity 1", "type": "Material" },
