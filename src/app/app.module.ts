@@ -11,6 +11,8 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { TableModule } from 'primeng/table';
 import { ShipsComponent } from './ships/ships.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     MenubarModule,
     ToolbarModule,
     TableModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

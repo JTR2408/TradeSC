@@ -1,37 +1,33 @@
-// data.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
+
+interface DataResponse {
+  ships: any[];
+  commodities: any[];
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-
-  private testDataUrl = 'assets/test-data.json'; // Path to your test data JSON file
+  private apiUrl = 'assets/test-data.json'; // Assuming data.json is in the assets folder
 
   constructor(private http: HttpClient) { }
 
+  getData(): Observable<DataResponse> {
+    return this.http.get<DataResponse>(this.apiUrl);
+  }
+
   getShips(): Observable<any[]> {
-    return this.http.get<any[]>(this.testDataUrl)
-      .pipe(
-        catchError(this.handleError<any[]>('getShips', []))
-      );
+    return this.getData().pipe(
+      map(data => data.ships)
+    );
   }
 
   getCommodities(): Observable<any[]> {
-    return this.http.get<any[]>(this.testDataUrl)
-      .pipe(
-        catchError(this.handleError<any[]>('getCommodities', []))
-      );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
+    return this.getData().pipe(
+      map(data => data.commodities)
+    );
   }
 }

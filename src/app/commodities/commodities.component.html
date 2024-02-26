@@ -1,5 +1,31 @@
 <div>
     <h1>Welcome to Commodities Page</h1>
     <!-- Your content goes here -->
-  </div>
+    <p-table
+    [value]="commodities"
+    [paginator]="true"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rows]="12"
+    [rowsPerPageOptions]="[12,24,36]"
+>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:25%">Commodity Name</th>
+            <th style="width:25%">Buy Price</th>
+            <th style="width:25%">Sell Price</th>
+            <th style="width:25%">Last Updated</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-commodities>
+        <tr>
+          <td>{{ commodities.Name }}</td>
+          <td>{{ commodities.Buy }}</td>
+          <td>{{ commodities.Sell }}</td>
+          <td>{{ commodities.Update }}</td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>
   

@@ -4,29 +4,27 @@
     <p-table
     [value]="ships"
     [paginator]="true"
-    [rows]="5"
     [showCurrentPageReport]="true"
     [tableStyle]="{ 'min-width': '50rem' }"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[25, 50, 100]"
+    [rows]="12"
+    [rowsPerPageOptions]="[12,24,36]"
 >
     <ng-template pTemplate="header">
         <tr>
-            <th style="width:50%">Ship Name</th>
-            <th style="width:50%">Ship Type</th>
+            <th style="width:25%">Ship</th>
+            <th style="width:25%">Cargo</th>
+            <th style="width:25%">aUEC</th>
+            <th style="width:25%">USD</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-ships>
         <tr>
-            <td>{{ ships.name }}</td>
-            <td>{{ ships.type }}</td>
+            <td>{{ ships.Ship }}</td>
+            <td>{{ ships.Cargo }}</td>
+            <td>{{ ships.aUEC }}</td>
+            <td>{{ ships.USD }}</td>
         </tr>
-    </ng-template>
-    <ng-template pTemplate="paginatorleft">
-        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
-    </ng-template>
-    <ng-template pTemplate="paginatorright">
-        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
     </ng-template>
 </p-table>
 
