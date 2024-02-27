@@ -12,7 +12,7 @@ import { TableModule } from 'primeng/table';
 import { ShipsComponent } from './ships/ships.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CardComponent } from './card/card.component';
+import { TradeComponent } from './trade/trade.component';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import { CardComponent } from './card/card.component';
     CommoditiesComponent,
     ShipsComponent,
     NavigationComponent,
-    CardComponent
+    TradeComponent
   ],
   imports: [
     BrowserModule,
