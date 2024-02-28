@@ -12,6 +12,10 @@ export class ShipsComponent implements OnInit {
   constructor(private dataService: DataService){}
 
   ngOnInit(): void {
-      this.dataService.getShips().subscribe(data => {this.ships = data})
+    this.dataService.getShips().subscribe(data => {
+      console.log(data); // Process the data here
+    }, error => {
+      console.error('Error fetching star systems:', error);
+    });
   }
 }

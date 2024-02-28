@@ -10,14 +10,13 @@ export class CommoditiesComponent implements OnInit {
 
   commodities: any[] = [];
 
-  constructor(private dataservice: DataService){}
+  constructor(private dataService: DataService){}
 
   ngOnInit(): void {
-      this.dataservice.getCommodities().subscribe(data => {this.commodities = data
-        console.log('Ships Data:', data);},
-        error => {
-          console.error('Error fetching ships:', error); // Log any errors that occur during data retrieval
-        }
-        )
+    this.dataService.getCommodities().subscribe(
+      (data: any[]) => {
+        this.commodities = data;
+      }
+    );
   }
 }
