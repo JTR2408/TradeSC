@@ -1,6 +1,8 @@
+// ships.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Ship } from '../ships.model'
+import { Ship } from '../ships.model';
 
 @Component({
   selector: 'app-ships',
@@ -8,9 +10,9 @@ import { Ship } from '../ships.model'
   styleUrls: ['./ships.component.scss']
 })
 export class ShipsComponent implements OnInit {
-  ships: any[] = [];
+  ships: Ship[] = [];
 
-  constructor(private dataService: DataService){}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.dataService.getShips().subscribe(data => {
@@ -23,18 +25,23 @@ export class ShipsComponent implements OnInit {
       }));
     });
   }
+
   private getShipClass(ship: Ship): string {
     if (ship.is_military === 1) {
       return 'Military';
     } else if (ship.is_civilian === 1) {
-      return 'Civilian';;
+      return 'Civilian';
     } else {
       return 'Unknown';
     }
   }
+
   private getShipStatus(ship: Ship): string {
-    if(ship.is_concept === 1){return 'In Concept';}
-    else{return 'Flight Ready';}
+    if(ship.is_concept === 1) {
+      return 'In Concept';
+    } else {
+      return 'Flight Ready';
+    }
   }
 
   private getShipRoll(ship: Ship): string {
@@ -87,5 +94,6 @@ export class ShipsComponent implements OnInit {
     } else {
       return 'Unknown';
     }
-}
+  }
+
 }

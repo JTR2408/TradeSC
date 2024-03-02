@@ -1,31 +1,56 @@
+<!-- commodities.component.html -->
+
 <div>
     <h1>Welcome to Commodities Page</h1>
-    <!-- Your content goes here -->
     <p-table
-    [value]="commodities"
-    [paginator]="true"
-    [showCurrentPageReport]="true"
-    [tableStyle]="{ 'min-width': '50rem' }"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rows]="12"
-    [rowsPerPageOptions]="[12,24,36]"
->
-    <ng-template pTemplate="header">
-        <tr>
-            <th style="width:25%">Commodity Name</th>
-            <th style="width:25%">Buy Price</th>
-            <th style="width:25%">Sell Price</th>
-            <th style="width:25%">Last Updated</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-commodities>
-        <tr>
-          <td>{{ commodities.Name }}</td>
-          <td>{{ commodities.Buy }}</td>
-          <td>{{ commodities.Sell }}</td>
-          <td>{{ commodities.Update }}</td>
-        </tr>
-    </ng-template>
-</p-table>
+        [value]="commodities"
+        [paginator]="true"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rows]="12"
+        [rowsPerPageOptions]="[12,24,36]"
+        [resizableColumns]="true"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="name">Name</th>
+                <th pSortableColumn="code">Code</th>
+                <th pSortableColumn="kind">Kind</th>
+                <th pSortableColumn="price_buy">Buy Price</th>
+                <th pSortableColumn="price_sell">Sell Price</th>
+                <th>Available</th>
+                <th>Visible</th>
+                <th>Raw</th>
+                <th>Harvestable</th>
+                <th>Buyable</th>
+                <th>Sellable</th>
+                <th>Temporary</th>
+                <th>Illegal</th>
+                <th>Wiki</th>
+                <th>Date Added</th>
+                <th>Date Modified</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-commodity>
+            <tr>
+                <td>{{ commodity.name }}</td>
+                <td>{{ commodity.code }}</td>
+                <td>{{ commodity.kind }}</td>
+                <td>{{ commodity.price_buy }}</td>
+                <td>{{ commodity.price_sell }}</td>
+                <td>{{ commodity.is_available }}</td>
+                <td>{{ commodity.is_visible }}</td>
+                <td>{{ commodity.is_raw }}</td>
+                <td>{{ commodity.is_harvestable }}</td>
+                <td>{{ commodity.is_buyable }}</td>
+                <td>{{ commodity.is_sellable }}</td>
+                <td>{{ commodity.is_temporary }}</td>
+                <td>{{ commodity.is_illegal }}</td>
+                <td>{{ commodity.wiki }}</td>
+                <td>{{ commodity.date_added }}</td>
+                <td>{{ commodity.date_modified }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
 </div>
-  

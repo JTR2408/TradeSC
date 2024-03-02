@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { commodities } from '../commodities';
 
 @Component({
   selector: 'app-commodities',
@@ -7,17 +8,13 @@ import { DataService } from '../data.service';
   styleUrls: ['./commodities.component.scss']
 })
 export class CommoditiesComponent implements OnInit {
+  commodities: commodities[] = []; // Array to store Commodities data
 
-  commodities: any[] = [];
-
-  constructor(private dataservice: DataService){}
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-      this.dataservice.getCommodities().subscribe(data => {this.commodities = data
-        console.log('Ships Data:', data);},
-        error => {
-          console.error('Error fetching ships:', error); // Log any errors that occur during data retrieval
-        }
-        )
+    this.dataService.getCommodities().subscribe(data => {
+      this.commodities = data; // Assign fetched Commodities data to the commodities array
+    });
   }
 }

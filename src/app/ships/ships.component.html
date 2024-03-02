@@ -1,42 +1,40 @@
+<!-- ships.component.html -->
+
 <div>
     <h1>Welcome to Ships Page</h1>
-    <!-- Your content goes here -->
     <p-table
-    [value]="ships"
-    [paginator]="true"
-    [showCurrentPageReport]="true"
-    [tableStyle]="{ 'min-width': '50rem' }"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rows]="12"
-    [rowsPerPageOptions]="[12,24,36]"
-    [resizableColumns]="true"
->
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Manufacturer</th>
-            <th>Ship Name</th>
-            <th pSortableColumn="scu">Cargo <p-sortIcon field="scu"></p-sortIcon></th>
-            <th>Crew</th>
-            <th>Environment</th>
-            <th>Class</th>
-            <th>Ship Status</th>
-            <th>Ship Roll</th>
-            
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-ship>
-        <tr>
-            <td>{{ ship.company_name }}</td>
-            <td>{{ ship.name }}</td>
-            <td>{{ ship.scu }}</td>
-            <td>{{ ship.crew }}</td>
-            <td>{{ ship.environment }}</td>
-            <td>{{ ship.shipClass }}</td>
-            <td>{{ ship.shipStatus }}</td>
-            <td>{{ ship.shipRoll }}</td>
-
-        </tr>
-    </ng-template>
-</p-table>
-
-  </div>
+        [value]="ships"
+        [paginator]="true"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rows]="12"
+        [rowsPerPageOptions]="[12,24,36]"
+        [resizableColumns]="true"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Manufacturer<p-columnFilter type="text" field="company_name" display="menu"></p-columnFilter></th>
+                <th>Ship Name<p-columnFilter type="text" field="name" display="menu"></p-columnFilter></th>
+                <th pSortableColumn="scu">Cargo <p-sortIcon field="scu"></p-sortIcon></th>
+                <th>Crew</th>
+                <th>Environment</th>
+                <th>Class</th>
+                <th>Ship Status</th>
+                <th>Ship Roll</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-ship>
+            <tr>
+                <td>{{ ship.company_name }}</td>
+                <td>{{ ship.name }}</td>
+                <td>{{ ship.scu }}</td>
+                <td>{{ ship.crew }}</td>
+                <td>{{ ship.environment }}</td>
+                <td>{{ ship.shipClass }}</td>
+                <td>{{ ship.shipStatus }}</td>
+                <td>{{ ship.shipRoll }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
