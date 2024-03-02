@@ -9,21 +9,32 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rows]="12"
     [rowsPerPageOptions]="[12,24,36]"
+    [resizableColumns]="true"
 >
     <ng-template pTemplate="header">
         <tr>
-            <th style="width:25%">Ship</th>
-            <th style="width:25%">Cargo</th>
-            <th style="width:25%">aUEC</th>
-            <th style="width:25%">USD</th>
+            <th>Manufacturer</th>
+            <th>Ship Name</th>
+            <th pSortableColumn="scu">Cargo <p-sortIcon field="scu"></p-sortIcon></th>
+            <th>Crew</th>
+            <th>Environment</th>
+            <th>Class</th>
+            <th>Ship Status</th>
+            <th>Ship Roll</th>
+            
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-ships>
+    <ng-template pTemplate="body" let-ship>
         <tr>
-            <td>{{ ships.Ship }}</td>
-            <td>{{ ships.Cargo }}</td>
-            <td>{{ ships.aUEC }}</td>
-            <td>{{ ships.USD }}</td>
+            <td>{{ ship.company_name }}</td>
+            <td>{{ ship.name }}</td>
+            <td>{{ ship.scu }}</td>
+            <td>{{ ship.crew }}</td>
+            <td>{{ ship.environment }}</td>
+            <td>{{ ship.shipClass }}</td>
+            <td>{{ ship.shipStatus }}</td>
+            <td>{{ ship.shipRoll }}</td>
+
         </tr>
     </ng-template>
 </p-table>
