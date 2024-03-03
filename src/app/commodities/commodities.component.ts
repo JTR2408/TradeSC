@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { commodities } from '../commodities';
+import { commodities } from '../commodities.model';
 
 @Component({
   selector: 'app-commodities',
@@ -8,13 +8,20 @@ import { commodities } from '../commodities';
   styleUrls: ['./commodities.component.scss']
 })
 export class CommoditiesComponent implements OnInit {
-  commodities: commodities[] = []; // Array to store Commodities data
+  commodities: commodities[] = [];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.dataService.getCommodities().subscribe(data => {
-      this.commodities = data; // Assign fetched Commodities data to the commodities array
+      this.commodities = this.mapCommodities(data);
     });
+  }
+
+  private mapCommodities(commodities: commodities[]): commodities[] {
+    return commodities.map(commodity => ({
+      ...commodity,
+      legality: commodity.is_illegal ? 'Illegal' : 'Legal'
+    }));    
   }
 }
