@@ -14,16 +14,16 @@
     >
         <ng-template pTemplate="header">
             <tr>
-                <th pSortableColumn="name">Name</th>
-                <th pSortableColumn="code">Code</th>
-                <th pSortableColumn="kind">Kind</th>
-                <th pSortableColumn="price_buy">Buy Price</th>
-                <th pSortableColumn="price_sell">Sell Price</th>
-                <th>Availability </th>
-                <th>Refinement</th>
-                <th>Harvestable</th>
+                <th>Name<p-columnFilter type="text" field="name" display="menu"></p-columnFilter></th>
+                <th>Code<p-columnFilter type="text" field="code" display = "menu"></p-columnFilter> </th>
+                <th>Kind<p-columnFilter type="text" field="kind" display="menu"></p-columnFilter></th>
+                <th pSortableColumn="price_buy">Buy Price <p-sortIcon field=" price_buy"></p-sortIcon></th>
+                <th pSortableColumn="price_sell">Sell Price <p-sortIcon field="price_sell"></p-sortIcon></th>
+                <th pSortableColumn="availability">Availability <p-sortIcon field="availability"></p-sortIcon></th>
+                <th pSortableColumn="refinement">Refinement <p-sortIcon field="refinement"></p-sortIcon></th>
+                <th pSortableColumn="harvestability">Harvestable <p-sortIcon field="harvestability"></p-sortIcon></th>
                 <th>Tradeability</th>
-                <th>Permanence</th>
+                <th pSortableColumn="permanence">Permanence <p-sortIcon field="permanence"></p-sortIcon></th>
                 <th pSortableColumn="legality">Legality <p-sortIcon field="legality"></p-sortIcon></th>
             </tr>
         </ng-template>
