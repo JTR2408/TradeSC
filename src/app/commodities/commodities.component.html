@@ -19,14 +19,12 @@
                 <th pSortableColumn="kind">Kind</th>
                 <th pSortableColumn="price_buy">Buy Price</th>
                 <th pSortableColumn="price_sell">Sell Price</th>
-                <!-- <th>Available</th> -->
-                <!-- <th>Visible</th>
-                <th>Raw</th>
-                <th>Harvestable</th> -->
-                <th>Buyable</th>
-                <th>Sellable</th>
-                <th>Temporary</th>
-                <th>Illegal</th>
+                <th>Availability </th>
+                <th>Refinement</th>
+                <th>Harvestable</th>
+                <th>Tradeability</th>
+                <th>Permanence</th>
+                <th pSortableColumn="legality">Legality <p-sortIcon field="legality"></p-sortIcon></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-commodity>
@@ -36,14 +34,12 @@
                 <td>{{ commodity.kind }}</td>
                 <td>{{ commodity.price_buy }} aUEC</td>
                 <td>{{ commodity.price_sell }} aUEC</td>
-                <!-- <td>{{ commodity.is_available }}</td> -->
-                <!-- <td>{{ commodity.is_visible }}</td>
-                <td>{{ commodity.is_raw }}</td>
-                <td>{{ commodity.is_harvestable }}</td> -->
-                <td>{{ commodity.is_buyable }}</td>
-                <td>{{ commodity.is_sellable }}</td>
-                <td>{{ commodity.is_temporary }}</td>
-                <td>{{ commodity.is_illegal }}</td>
+                <td>{{ commodity.availability }}</td>
+                <td>{{ commodity.refinement }}</td>
+                <td>{{ commodity.harvestability }}</td>
+                <td>{{ commodity.tradeability }}</td>
+                <td>{{ commodity.permanence }}</td>
+                <td>{{ commodity.legality }}</td>
             </tr>
         </ng-template>
     </p-table>

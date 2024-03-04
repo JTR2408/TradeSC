@@ -14,14 +14,29 @@ export class CommoditiesComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getCommodities().subscribe(data => {
-      this.commodities = this.mapCommodities(data);
+      this.commodities = data.map(commodity => ({
+        ...commodity,
+        legality: commodity.is_illegal ? 'Illegal' : 'Legal',
+        refinement: commodity.is_raw ? 'Unrefined' : 'Refined',
+        harvestability: commodity.is_harvestable ? 'Harvestable' : 'Unharvestable',
+        availability: commodity.is_available ? 'Available' : 'Unavailable',
+        tradeability: this.getTradeability(commodity),
+        permanence: commodity.is_temporary ? 'Temporary' : 'Permanent'
+      }))
     });
   }
 
-  private mapCommodities(commodities: commodities[]): commodities[] {
-    return commodities.map(commodity => ({
-      ...commodity,
-      legality: commodity.is_illegal ? 'Illegal' : 'Legal'
-    }));    
+  private getTradeability(commodity: commodities): string{
+    if(commodity.is_buyable === 1 && commodity.is_sellable === 1){
+      return 'Buyable/Sellable'
+    }
+    else if(commodity.is_buyable === 1){
+      return 'Buyable';
+    }else if (commodity.is_sellable ==1){
+      return 'Sellable'
+    }else{
+      return 'Unknown'
+    }
   }
+
 }

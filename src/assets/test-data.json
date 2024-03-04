@@ -8549,8 +8549,7 @@
                     "is_buyable": 0,
                     "is_sellable": 1,
                     "is_temporary": 0,
-                    "is_illegal": 0,
-                    "wiki": "https://starcitizen.tools/Dolivine"
+                    "is_illegal": 0
                 },
                 {
                     "id": 29,
