@@ -20,7 +20,6 @@
 .content {
   margin-left: 125px; /* Width of the sidebar */
   margin-top: 75px;
-  padding: 50px;
 }
 
 .p-toolbar {
@@ -48,5 +47,16 @@
   max-height: 75%;
 }
 
+.wrapper {
+  background-image: url('assets/ARGORaft.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* Other background properties as needed */
+}
 
+body{
+  margin: 0%;
+  padding: 0%;
+}
   
