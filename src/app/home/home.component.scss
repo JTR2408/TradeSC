@@ -1,34 +1,45 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .box {
-    width: 80%;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #1e1e1e;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between; /* Adjust as needed */
-    align-items: center; /* Align items vertically in the center */
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .btn-primary {
-    background-color: var(--blue-200);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-primary:hover {
-    background-color: #007bff;
-  }
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.box {
+width: 40%;
+padding: 20px;
+border-radius: 10px;
+background-color: #1e1e1e; /* Adjust opacity as needed */
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.form-group {
+margin-bottom: 20px;
+padding-left: 15px;
+padding-right: 15px;
+}
+
+.btn-primary {
+background-color: var(--blue-200);
+color: #fff;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.btn-primary:hover {
+background-color: #007bff;
+}
+
+.form-group label{
+padding-right: 15px;
+}
+
+.custom-dropdown{
+width: 200px;
+}

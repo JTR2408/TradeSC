@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 interface DataResponse {
   ships: any[];
   commodities: any[];
+  tradePorts: any[];
 }
 
 @Injectable({
@@ -28,6 +29,12 @@ export class DataService {
   getCommodities(): Observable<any[]> {
     return this.getData().pipe(
       map(data => data.commodities)
+    );
+  }
+
+  getTradePosts(): Observable<any[]> {
+    return this.getData().pipe(
+      map(data => data.tradePorts)
     );
   }
 }

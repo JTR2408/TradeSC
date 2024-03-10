@@ -1,4 +1,4 @@
-export interface commodities{
+export interface Commodities{
     id: number;
     id_parent: number;
     name: string;

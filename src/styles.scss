@@ -20,6 +20,8 @@
 .content {
   margin-left: 125px; /* Width of the sidebar */
   margin-top: 75px;
+  padding-left: 50px;
+  padding-right: 20px;
 }
 
 .p-toolbar {
@@ -58,5 +60,6 @@
 body{
   margin: 0%;
   padding: 0%;
+  overflow: hidden;
 }
   

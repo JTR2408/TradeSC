@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { commodities } from '../commodities.model';
+import { Commodities } from '../commodities.model';
 
 @Component({
   selector: 'app-commodities',
@@ -8,7 +8,7 @@ import { commodities } from '../commodities.model';
   styleUrls: ['./commodities.component.scss']
 })
 export class CommoditiesComponent implements OnInit {
-  commodities: commodities[] = [];
+  commodities: Commodities[] = [];
 
   constructor(private dataService: DataService) { }
 
@@ -26,7 +26,7 @@ export class CommoditiesComponent implements OnInit {
     });
   }
 
-  private getTradeability(commodity: commodities): string{
+  private getTradeability(commodity: Commodities): string{
     if(commodity.is_buyable === 1 && commodity.is_sellable === 1){
       return 'Buyable/Sellable'
     }
