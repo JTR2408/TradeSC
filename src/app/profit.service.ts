@@ -11,38 +11,38 @@ export class ProfitService {
 
   constructor(private dataService: DataService) { }
 
-  findBestTrade(ship: Ship, investment: number): Observable<string> {
-    return this.dataService.getTradePosts().pipe(
-      map((tradePosts: tradePost[]) => {
-        let maxProfit = 0;
-        let bestTrade = '';
+  // findBestTrade(ship: Ship, investment: number): Observable<string> {
+  //   return this.dataService.getTradePosts().pipe(
+  //     map((tradePosts: tradePost[]) => {
+  //       let maxProfit = 0;
+  //       let bestTrade = '';
 
-        if (!tradePosts || tradePosts.length === 0) {
-          return 'No trade posts available';
-        }
+  //       if (!tradePosts || tradePosts.length === 0) {
+  //         return 'No trade posts available';
+  //       }
 
-        tradePosts.forEach((buyPost: tradePost) => {
-          if (!buyPost.prices) {
-            return;
-          }
-          for (const commodity in buyPost.prices) {
-            const buyPrice = buyPost.prices[commodity].price_buy;
-            const sellPost = this.findBestSellPost(commodity, tradePosts, buyPost);
-            if (sellPost) {
-              const sellPrice = sellPost.prices[commodity].price_sell;
-              const profit = (sellPrice - buyPrice) * ship.scu;
-              if (profit > maxProfit && buyPrice * ship.scu <= investment) {
-                maxProfit = profit;
-                bestTrade = `Buy ${commodity} from ${buyPost.name} and sell at ${sellPost.name}`;
-              }
-            }
-          }
-        });
+  //       tradePosts.forEach((buyPost: tradePost) => {
+  //         if (!buyPost.prices) {
+  //           return;
+  //         }
+  //         for (const commodity in buyPost.prices) {
+  //           const buyPrice = buyPost.prices[commodity].price_buy;
+  //           const sellPost = this.findBestSellPost(commodity, tradePosts, buyPost);
+  //           if (sellPost) {
+  //             const sellPrice = sellPost.prices[commodity].price_sell;
+  //             const profit = (sellPrice - buyPrice) * ship.scu;
+  //             if (profit > maxProfit && buyPrice * ship.scu <= investment) {
+  //               maxProfit = profit;
+  //               bestTrade = `Buy ${commodity} from ${buyPost.name} and sell at ${sellPost.name}`;
+  //             }
+  //           }
+  //         }
+  //       });
 
-        return bestTrade || 'No profitable trade found';
-      })
-    );
-  }
+  //       return bestTrade || 'No profitable trade found';
+  //     })
+  //   );
+  // }
 
   private findBestSellPost(commodity: string, tradePosts: tradePost[], buyPost: tradePost): tradePost | null {
     let maxSellPrice = 0;
@@ -59,5 +59,34 @@ export class ProfitService {
     });
 
     return bestSellPost;
+  }
+
+  findBestTrade(ship: Ship, investment: number): Observable<string> {
+    return this.dataService.getTradePosts().pipe(
+      map(tradePosts => {
+        let maxProfit = 0;
+        let bestTrade = '';
+  
+        tradePosts.forEach((buyPost: tradePost) => {
+          for (const commodity in buyPost.prices) {
+            const buyPrice = buyPost.prices[commodity].price_buy;
+            // Check if buy price is greater than 0 (i.e., it's available for purchase)
+            if (buyPrice > 0) {
+              const sellPost = this.findBestSellPost(commodity, tradePosts, buyPost);
+              if (sellPost) {
+                const sellPrice = sellPost.prices[commodity].price_sell;
+                const profit = (sellPrice - buyPrice) * ship.scu;
+                if (profit > maxProfit && buyPrice * ship.scu <= investment) {
+                  maxProfit = profit;
+                  bestTrade = `Buy ${commodity} from ${buyPost.name} and sell at ${sellPost.name}`;
+                }
+              }
+            }
+          }
+        });
+  
+        return bestTrade;
+      })
+    );
   }
 }
