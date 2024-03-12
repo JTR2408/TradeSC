@@ -3,7 +3,7 @@ import { DataService } from '../data.service';
 import { SelectItem } from 'primeng/api';
 import { Ship } from '../ships.model';
 import { Commodities } from '../commodities.model';
-import { OptimizationService } from '../optimizationService';
+import { ProfitService } from '../profit.service'; // Assuming you renamed your service to ProfitService
 
 @Component({
   selector: 'app-home',
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   commodities: Commodities[] = [];
   commoditiesDropdownOptions: SelectItem[] = [];
 
-  constructor(private dataService: DataService, private optimizationService: OptimizationService) { }
+  constructor(private dataService: DataService, private profitService: ProfitService) { }
 
   ngOnInit(): void {
     this.dataService.getShips().subscribe(data => {
@@ -36,14 +36,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
   onSubmit(): void {
-    this.optimizationService.findBestTradeRoute(this.investment, this.selectedShip).subscribe(
-      tradeRoute => {
-        console.log(tradeRoute);
+    this.profitService.findBestTrade(this.selectedShip, this.investment).subscribe(
+      bestTrade => {
+        console.log(bestTrade);
       },
       error => {
-        console.error('Error finding best trade route:', error);
+        console.error('Error finding best trade:', error);
       }
     );
   }

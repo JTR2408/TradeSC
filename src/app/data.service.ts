@@ -34,9 +34,9 @@ export class DataService {
     );
   }
 
-  getTradePosts(): Observable<tradePost[]> {
-    return this.getData().pipe(
-      map(data => data['tradePosts'])
-    );
-  }
+ getTradePosts(): Observable<tradePost[]> {
+  return this.getData().pipe(
+    map(data => data['tradePosts'])
+  );
+}
 }
