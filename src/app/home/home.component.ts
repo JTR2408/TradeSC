@@ -38,14 +38,13 @@ export class HomeComponent implements OnInit {
 
 
   onSubmit(): void {
-    this.optimizationService.findBestTradeRoute(this.investment).subscribe(
+    this.optimizationService.findBestTradeRoute(this.investment, this.selectedShip).subscribe(
       tradeRoute => {
-        console.log(tradeRoute); // Output the result to console
+        console.log(tradeRoute);
       },
       error => {
         console.error('Error finding best trade route:', error);
       }
     );
   }
-  
 }

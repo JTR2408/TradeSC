@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { tradePost } from './tradePost.model';
 
 interface DataResponse {
   ships: any[];
   commodities: any[];
   tradePorts: any[];
+  [key: string]: any;
 }
 
 @Injectable({
@@ -32,9 +34,9 @@ export class DataService {
     );
   }
 
-  getTradePosts(): Observable<any[]> {
+  getTradePosts(): Observable<tradePost[]> {
     return this.getData().pipe(
-      map(data => data.tradePorts)
+      map(data => data['tradePosts'])
     );
   }
 }
