@@ -4,11 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CommoditiesComponent } from './commodities/commodities.component';
-import { ShipsComponent } from './ships/ships.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { ToolbarModule } from 'primeng/toolbar';
+import { TableModule } from 'primeng/table';
+import { ShipsComponent } from './ships/ships.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { ToolbarModule } from 'primeng/toolbar';
     AppRoutingModule,
     ButtonModule,
     MenubarModule,
-    ToolbarModule
+    ToolbarModule,
+    TableModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    DropdownModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

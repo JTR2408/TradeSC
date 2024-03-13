@@ -1,0 +1,40 @@
+export interface Ship {
+    id: number;
+    id_company: number;
+    id_parent: number;
+    ids_vehicles_loaners: string | null;
+    name: string;
+    name_full: string;
+    scu: number;
+    crew: string;
+    is_concept: number;
+    is_civilian: number;
+    is_military: number;
+    is_exploration: number;
+    is_passenger: number;
+    is_industrial: number;
+    is_mining: number;
+    is_salvage: number;
+    is_refinery: number;
+    is_scanning: number;
+    is_cargo: number;
+    is_medical: number;
+    is_racing: number;
+    is_repair: number;
+    is_refuel: number;
+    is_interdiction: number;
+    is_tractor_beam: number;
+    is_qed: number;
+    is_emp: number;
+    is_construction: number;
+    is_datarunner: number;
+    is_science: number;
+    is_boarding: number;
+    is_stealth: number;
+    is_research: number;
+    is_carrier: number;
+    is_ground_vehicle: number;
+    is_spaceship: number;
+    company_name: string;
+  }
+  
