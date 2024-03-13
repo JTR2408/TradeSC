@@ -3,7 +3,7 @@ import { DataService } from '../data.service';
 import { SelectItem } from 'primeng/api';
 import { Ship } from '../ships.model';
 import { Commodities } from '../commodities.model';
-import { ProfitService } from '../profit.service'; // Assuming you renamed your service to ProfitService
+import { ProfitService } from '../profit.service';
 
 @Component({
   selector: 'app-home',
@@ -12,22 +12,19 @@ import { ProfitService } from '../profit.service'; // Assuming you renamed your 
 })
 export class HomeComponent implements OnInit {
   ships: Ship[] = [];
-  shipsDropdownOptions: any[] = [];
   selectedShip!: Ship;
   investment: number = 0;
   selectedCommodity: string = '';
   minimumInvestment: number | undefined;
   commodities: Commodities[] = [];
   commoditiesDropdownOptions: SelectItem[] = [];
+  bestTradeOut: string | null = null;
 
   constructor(private dataService: DataService, private profitService: ProfitService) { }
 
   ngOnInit(): void {
     this.dataService.getShips().subscribe(data => {
-      this.ships = data;
-      this.shipsDropdownOptions = this.ships
-      .filter(ship => ship.scu > 0) // Filter ships with at least 1 SCU of cargo space
-      .map(ship => ({ label: ship.name_full, value: ship }));
+      this.ships = data.filter(ship => ship.scu != 0);
     });
     this.dataService.getCommodities().subscribe(data => {
       this.commodities = data;
@@ -36,9 +33,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
   onSubmit(): void {
     this.profitService.findBestTrade(this.selectedShip, this.investment).subscribe(
       bestTrade => {
+        this.bestTradeOut = bestTrade
         console.log(bestTrade);
       },
       error => {

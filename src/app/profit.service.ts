@@ -37,7 +37,6 @@ export class ProfitService {
         tradePosts.forEach((buyPost: tradePost) => {
           for (const commodity in buyPost.prices) {
             const buyPrice = buyPost.prices[commodity].price_buy;
-            // Check if buy price is greater than 0 (i.e., it's available for purchase)
             if (buyPrice > 0) {
               const sellPost = this.findBestSellPost(commodity, tradePosts, buyPost);
               if (sellPost) {
@@ -45,8 +44,11 @@ export class ProfitService {
                 const profit = (sellPrice - buyPrice) * ship.scu;
                 if (profit > maxProfit && buyPrice * ship.scu <= investment) {
                   maxProfit = profit;
-                  bestTrade = `Buy ${commodity} from ${buyPost.name} and sell at ${sellPost.name}`;
+                  bestTrade = `Buy ${ship.scu}SCU of ${commodity} from ${buyPost.name} and sell at ${sellPost.name} for an ${profit}aUEC profit`;
                 }
+                // if(ship.scu !> 0){
+                //   bestTrade = 'An Error has been encountered please review your ship choice'
+                // }
               }
             }
           }

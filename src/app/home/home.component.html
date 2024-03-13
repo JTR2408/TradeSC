@@ -14,6 +14,10 @@
           <input type="number" id="investment" name="investment" [(ngModel)]="investment" required>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <div *ngIf="bestTradeOut">
+          <h2>Trade Optimization Output</h2>
+          <p>{{ bestTradeOut }}</p>
+        </div>
       </form>
     </div>
   </div>
