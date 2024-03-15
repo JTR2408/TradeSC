@@ -46,9 +46,6 @@ export class ProfitService {
                   maxProfit = profit;
                   bestTrade = `Buy ${ship.scu}SCU of ${commodity} from ${buyPost.name} and sell at ${sellPost.name} for an ${profit}aUEC profit`;
                 }
-                // if(ship.scu !> 0){
-                //   bestTrade = 'An Error has been encountered please review your ship choice'
-                // }
               }
             }
           }
