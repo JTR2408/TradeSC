@@ -1,0 +1,8 @@
+This project encoutered issues with publicly hosting please run it localy
+
+Requirments:
+Nodejs (version 20) https://nodejs.org/en/download
+Angular CLI (npm install -g @angular/cli) https://angular.io/cli
+
+
+To run this tool open the terminal in your IDE once the prerequasits have been installed use the command "ng serve --o" and the tool will be opened in your default browser
