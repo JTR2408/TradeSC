@@ -14,7 +14,7 @@ interface DataResponse {
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = 'assets/test-data.json';
+  private apiUrl = 'assets/data.json';
 
   constructor(private http: HttpClient) { }
 
